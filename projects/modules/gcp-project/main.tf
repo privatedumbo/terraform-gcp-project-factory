@@ -134,7 +134,10 @@ resource "google_iam_workload_identity_pool" "github" {
   description               = "Workload Identity Pool for GitHub Actions"
   project                   = google_project.this.project_id
 
-  depends_on = [google_project_service.apis]
+  depends_on = [
+    google_project_service.apis,
+    google_project_iam_member.seed_owner,
+  ]
 }
 
 resource "google_iam_workload_identity_pool_provider" "github" {

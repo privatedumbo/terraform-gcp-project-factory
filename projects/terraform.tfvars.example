@@ -16,9 +16,12 @@ seed_service_account = "terraform-sa@your-seed-project.iam.gserviceaccount.com"
 # us-central1 is free tier eligible for many services
 default_region = "us-central1"
 
-# Optional: Monthly budget in USD (0 = disabled)
+# Optional: Monthly budget amount (0 = disabled)
 # Sends email alerts at 50%, 90%, and 100%
-monthly_budget_usd = 25
+monthly_budget_amount = 25
+
+# Optional: Budget currency (must match your billing account currency)
+# budget_currency = "USD"
 
 # ------------------------------------------------------------------------------
 # Projects to Create

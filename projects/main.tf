@@ -31,7 +31,7 @@ module "gcp_project" {
 # Alerts at 50%, 90%, and 100% of the monthly budget.
 
 resource "google_billing_budget" "monthly_budget" {
-  count = var.monthly_budget_usd > 0 ? 1 : 0
+  count = var.monthly_budget_amount > 0 ? 1 : 0
 
   billing_account = var.billing_account
   display_name    = "Monthly Budget Alert"
@@ -42,8 +42,8 @@ resource "google_billing_budget" "monthly_budget" {
 
   amount {
     specified_amount {
-      currency_code = "USD"
-      units         = tostring(var.monthly_budget_usd)
+      currency_code = var.budget_currency
+      units         = tostring(var.monthly_budget_amount)
     }
   }
 

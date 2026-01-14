@@ -22,10 +22,16 @@ variable "default_region" {
   default     = "us-central1"
 }
 
-variable "monthly_budget_usd" {
-  description = "Monthly budget in USD. Set to 0 to disable budget alerts."
+variable "monthly_budget_amount" {
+  description = "Monthly budget amount. Set to 0 to disable budget alerts."
   type        = number
   default     = 25
+}
+
+variable "budget_currency" {
+  description = "Currency code for budget (e.g., 'EUR', 'USD'). Must match your billing account currency."
+  type        = string
+  default     = "USD"
 }
 
 # ------------------------------------------------------------------------------
