@@ -1,0 +1,64 @@
+# ------------------------------------------------------------------------------
+# Project Factory Configuration
+# ------------------------------------------------------------------------------
+# Copy this file to terraform.tfvars and fill in your values.
+# Run: cp terraform.tfvars.example terraform.tfvars
+
+# Required: Your GCP billing account ID
+# Find it: gcloud billing accounts list
+billing_account = "XXXXXX-XXXXXX-XXXXXX"
+
+# Required: The seed service account email
+# Created during bootstrap (see bootstrap/README.md)
+seed_service_account = "terraform-sa@your-seed-project.iam.gserviceaccount.com"
+
+# Optional: Default region for resources
+# us-central1 is free tier eligible for many services
+default_region = "us-central1"
+
+# Optional: Monthly budget in USD (0 = disabled)
+# Sends email alerts at 50%, 90%, and 100%
+monthly_budget_usd = 25
+
+# ------------------------------------------------------------------------------
+# Projects to Create
+# ------------------------------------------------------------------------------
+# Each key becomes the project ID (must be globally unique).
+
+projects = {
+  # Example: Development project with Cloud Run and GitHub Actions
+  "myapp-dev" = {
+    display_name      = "My App (Development)"
+    github_repository = "your-username/your-repo"
+    apis = [
+      "run.googleapis.com",
+      "artifactregistry.googleapis.com",
+      "secretmanager.googleapis.com",
+    ]
+  }
+
+  # Example: Production project with additional security
+  # "myapp-prod" = {
+  #   display_name      = "My App (Production)"
+  #   github_repository = "your-username/your-repo"
+  #   apis = [
+  #     "run.googleapis.com",
+  #     "artifactregistry.googleapis.com",
+  #     "secretmanager.googleapis.com",
+  #     "sqladmin.googleapis.com",
+  #   ]
+  #   iam = {
+  #     "user:admin@example.com" = ["roles/owner"]
+  #   }
+  # }
+
+  # Example: Shared services project (no GitHub OIDC)
+  # "shared-services" = {
+  #   display_name = "Shared Services"
+  #   apis = [
+  #     "compute.googleapis.com",
+  #     "container.googleapis.com",
+  #   ]
+  # }
+}
+
