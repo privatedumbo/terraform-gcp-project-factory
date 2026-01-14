@@ -2,6 +2,8 @@
 
 Bootstrap multiple GCP projects with Terraform state management and GitHub Actions OIDC from a single seed project.
 
+> ⚠️ **Disclaimer**: This is a personal learning project. I do not recommend using this for production scenarios.
+
 Each managed project gets:
 - Terraform service account (Owner role)
 - State bucket (versioned GCS)
