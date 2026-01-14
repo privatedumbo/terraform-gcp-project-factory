@@ -23,15 +23,20 @@ flowchart LR
 ## Quick Start
 
 ```bash
-# 1. Bootstrap seed project (one-time)
-# See docs/bootstrap.md
+# 1. Authenticate with GCP
+gcloud auth login
+gcloud auth application-default login
 
-# 2. Configure your projects
+# 2. Bootstrap seed project (one-time, ~5 minutes)
+#    Creates: project, service account, APIs, state bucket
+#    Full script: docs/bootstrap.md
+
+# 3. Configure your projects
 cd projects
 cp terraform.tfvars.example terraform.tfvars
 # Edit terraform.tfvars with your values
 
-# 3. Create projects
+# 4. Create projects
 terraform init
 terraform apply
 ```
@@ -40,9 +45,9 @@ terraform apply
 
 | Document | Description |
 |----------|-------------|
-| [Getting Started](docs/README.md) | Overview and documentation index |
-| [Bootstrap Guide](docs/bootstrap.md) | One-time seed project setup |
-| [Usage Guide](docs/usage.md) | Configuration, commands, and examples |
+| [Getting Started](docs/README.md) | Overview, prerequisites, and checklist |
+| [Bootstrap Guide](docs/bootstrap.md) | **Start here** — All gcloud commands for initial setup |
+| [Usage Guide](docs/usage.md) | Configuration, terraform commands, and examples |
 
 ## Project Structure
 

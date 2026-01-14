@@ -1,13 +1,17 @@
 # Usage Guide
 
+> **First time?** Complete the [Bootstrap Guide](bootstrap.md) before proceeding.
+
 ## Authentication
 
-Before running Terraform, authenticate with GCP:
+Before running Terraform, ensure you've authenticated with GCP:
 
 ```bash
-gcloud auth application-default login
+# Check if already authenticated
+gcloud auth application-default print-access-token > /dev/null && echo "ADC: OK"
 
-# Set quota project (required for billing budget API)
+# If not, authenticate (done during bootstrap)
+gcloud auth application-default login
 gcloud auth application-default set-quota-project YOUR_SEED_PROJECT_ID
 ```
 
